@@ -12,6 +12,8 @@ const inputEl = document.querySelector('input[id="search-box"]');
 
 const ulEl = document.querySelector('.country-list');
 
+const divEl = document.querySelector('.country-info');
+
 //console.log(ulEl);
 
 const onInputCountryName = event => {
@@ -20,16 +22,18 @@ const onInputCountryName = event => {
     
     ulEl.innerHTML = '';
 
+    divEl.innerHTML = '';
+
     if (countryName !== '') {
 
         fetchedCountries(countryName).then(data => {
 
             if (data.length > 10) {
 
-                Notiflix.Notify.failure('Too many matches found. Please enter a more specific name.');
+                Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
 
             } else if (data.length > 1) {
-                console.log(data);
+                //console.log(data);
 
                 const markUp = data.map(country => {
 
@@ -45,7 +49,17 @@ const onInputCountryName = event => {
                 ulEl.innerHTML = markUp;
 
             } else {
+                console.log(data);
+
+                const markUp = data.map(country => {
+
+                    const { capital, flags: { svg }, name: { official }, languages, population} = country;
+                    
+                    return ``;
                 
+                }).join('');
+
+                divEl.innerHTML = markUp;
             }
         }
         );
