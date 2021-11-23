@@ -33,7 +33,6 @@ const onInputCountryName = event => {
                 Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
 
             } else if (data.length > 1) {
-                //console.log(data);
 
                 const markUp = data.map(country => {
 
@@ -49,13 +48,16 @@ const onInputCountryName = event => {
                 ulEl.innerHTML = markUp;
 
             } else {
-                console.log(data);
 
                 const markUp = data.map(country => {
 
-                    const { capital, flags: { svg }, name: { official }, languages, population} = country;
+                    const { capital, flags: { svg }, name: { official }, languages, population } = country;
                     
-                    return ``;
+                    return `<h1>${official}</h1>
+                    <p><span>Capital: </span>${capital}</p>
+                    <p><span>Population: </span>${population}</p>
+                    <p><span>Languages: </span>${Object.values(languages).join(', ')}</p>
+                    `;
                 
                 }).join('');
 
