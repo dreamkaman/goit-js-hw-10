@@ -33,15 +33,17 @@ li {
 img {
   display: block;
   margin-right: 20px;
-
-  /* height: auto; */
 }
 
 p {
   font-size: inherit;
-  /* font-weight: bold; */
 }
 
 span {
   font-weight: bold;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
 }
